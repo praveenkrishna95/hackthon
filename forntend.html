@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Embodied Carbon Emissions</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    body {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+    }
+
+    section {
+      height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transition: transform 1s ease, opacity 1s ease;
+      color: white;
+    }
+
+    .page1 {
+      background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809');
+      background-size: cover;
+      background-position: center;
+      font-size: 2.5em;
+      font-weight: bold;
+    }
+
+    .scroll-down {
+      font-size: 0.7em;
+      margin-top: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    .page2 {
+      background-color: #f7f0ee;
+      color: #4a2b2b;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .filters button {
+      background-color: #6d3c3c;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 16px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .filters button:hover {
+      transform: scale(1.15);
+    }
+
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      height: 300px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .bar {
+      width: 30px;
+      background-color: #7c3a3a;
+      text-align: center;
+      color: white;
+      font-size: 0.75em;
+      transition: transform 0.3s;
+    }
+
+    .bar:hover {
+      transform: scale(1.1);
+    }
+
+    .bar.light {
+      background-color: #c99b9b;
+    }
+
+    .key, .subtext, .header {
+      text-align: center;
+    }
+
+    .header {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .info-section {
+      margin-top: 30px;
+      font-size: 1.1em;
+      text-align: center;
+    }
+
+    .page3 {
+      background-color: #2d2d2d;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .back-to-top {
+      margin-top: 30px;
+      background: #fff;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.3s ease, background 0.3s;
+    }
+
+    .back-to-top:hover {
+      transform: scale(1.1);
+      background: #ddd;
+    }
+
+    /* Cloudy smoke effect (original version) */
+    .smoke {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.1) 0%, transparent 80%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: fadeOut 1.5s forwards;
+      mix-blend-mode: multiply;
+      z-index: 10000;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: scale(2);
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="page1" id="top">
+    Sustainable Building Matters
+    <div class="scroll-down">Scroll down ⬇️</div>
+  </section>
+
+  <section class="page2">
+    <div class="header">EMBODIED<br>CARBON<br>EMISSIONS</div>
+    <div class="subtext">kgCO<sub>2</sub>e/m<sup>2</sup></div>
+    <div class="filters">
+      <button>Refurbishment</button>
+      <button>New build</button>
+      <button style="background-color: #4a2b2b;">All</button>
+      <button style="margin-left: auto; background-color: #4a2b2b;">Complete</button>
+      <button>Estimate</button>
+    </div>
+    <div class="key">
+      ────── 500 kgCO₂e/m² – Target 2030<br>
+      ────── 600 kgCO₂e/m² – Target 2025
+    </div>
+    <div class="bar-chart">
+      <div class="bar light" style="height: 137px;">549</div>
+      <div class="bar" style="height: 219px;">875</div>
+      <div class="bar light" style="height: 70px;">278</div>
+      <div class="bar" style="height: 154px;">617</div>
+      <div class="bar light" style="height: 127px;">508</div>
+      <div class="bar" style="height: 208px;">881</div>
+      <div class="bar light" style="height: 138px;">550</div>
+      <div class="bar" style="height: 135px;">539</div>
+    </div>
+    <div class="info-section">
+      Reducing embodied carbon is crucial for climate goals.<br>
+      It refers to emissions from materials and construction.
+    </div>
+  </section>
+
+  <section class="page3">
+    <h2>Thank You for Exploring</h2>
+    <p>Let’s build a sustainable future together. Contact us for more resources on reducing embodied carbon in construction.</p>
+    <a href="#top" class="back-to-top">⬆ Back to Top</a>
+  </section>
+
+  <script>
+    document.addEventListener('mousemove', function(e) {
+      const smoke = document.createElement('div');
+      smoke.classList.add('smoke');
+      smoke.style.left = `${e.clientX - 15}px`;
+      smoke.style.top = `${e.clientY - 15}px`;
+      document.body.appendChild(smoke);
+      setTimeout(() => smoke.remove(), 1500);
+    });
+  </script>
+</body>
+</html>
